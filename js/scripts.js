@@ -53,14 +53,16 @@ $('#excel-file').change((e) => {
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
-const getAge =(birthday)=> {
+const getAge = (birthday) => {
     //出生时间 毫秒
     const birthDayTime = new Date(birthday).getTime();
     //当前时间 毫秒
     const nowTime = new Date().getTime();
     //一年毫秒数(365 * 86400000 = 31536000000)
-    return Math.ceil((nowTime-birthDayTime)/31536000000);
+    return Math.ceil((nowTime - birthDayTime) / 31536000000);
 }
+
+const padLeft = (str) => str.toString().length >= 2 ? str : padLeft("0" + str, 2)
 
 const formatConversion = (name, serial) => {
     const utc_days = Math.floor(serial - 25569);
@@ -69,11 +71,11 @@ const formatConversion = (name, serial) => {
 
 
     const nameYear = date_info.getFullYear()
-    const password = name.substr(0, 1) + date_info.getMonth() + date_info.getDate() + date_info.getMonth() + date_info.getDate()
+    const password = name.substr(0, 1) + padLeft(date_info.getMonth() + 1) + padLeft(date_info.getDate()) + padLeft(date_info.getMonth() + 1) + padLeft(date_info.getDate())
 
     let account = name.replace(/\s*/g, "").toLowerCase()
     account = account + nameYear
-    const date = `${date_info.getFullYear()}-${date_info.getMonth()}-${date_info.getDate()}`
+    const date = `${date_info.getFullYear()}-${padLeft(date_info.getMonth() + 1)}-${padLeft(date_info.getDate())}`
 
     const zoneNum = getRandomInt(zones.length)
     const zone = zones[zoneNum]
@@ -86,7 +88,7 @@ const formatConversion = (name, serial) => {
     const job = jobs[getRandomInt(jobs.length)]
     const youtube = yt[getRandomInt(yt.length)]
 
-    const age = getAge(date) -1
+    const age = getAge(date) - 1
 
     return {
         name,
