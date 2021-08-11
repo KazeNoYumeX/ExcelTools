@@ -19,7 +19,7 @@ $('#excel-file').change((e) => {
 
     if (extensionList.indexOf(extension) !== -1) {
         const fileReader = new FileReader();
-        fileReader.onload =  (ev)=> {
+        fileReader.onload = (ev) => {
             try {
                 const data = ev.target.result
                 // 以二進位制流方式讀取得到整份excel表格物件
@@ -51,27 +51,36 @@ $('#excel-file').change((e) => {
     }
 });
 
-const formatConversion = (name, serial) => {
+const formatConversion = (name, serial, age) => {
     const utc_days = Math.floor(serial - 25569);
     const utc_value = utc_days * 86400;
     const date_info = new Date(utc_value * 1000);
 
-    name = name.replace(/\s*/g, "").toLowerCase()
+
     const nameYear = date_info.getFullYear()
     const password = name.substr(0, 1) + date_info.getMonth() + date_info.getDate() + date_info.getMonth() + date_info.getDate()
-    name = name + nameYear
+
+    let account = name.replace(/\s*/g, "").toLowerCase()
+    account = account + nameYear
+    const date = `${date_info.getFullYear()}-${date_info.getMonth()}-${date_info.getDate()}`
 
     console.log(name, password)
 
     return {
         name,
-        password
+        date,
+        age,
+        account,
+        password,
     };
 }
 
 const onExport = () => {
+
+    let age = 25
     for (let i = 0; i < fileName.length; i++) {
-        fileName[i] = formatConversion(fileName[i].name, fileName[i].date)
+        fileName[i] = formatConversion(fileName[i].name, fileName[i].date, age)
+        age++
     }
 
     const workbook = XLSX.utils.book_new();
