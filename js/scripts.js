@@ -77,6 +77,8 @@ const formatConversion = (name, serial, age) => {
         age,
         account,
         password,
+        fans3,
+        fans4
     };
 }
 
