@@ -53,7 +53,16 @@ $('#excel-file').change((e) => {
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
-const formatConversion = (name, serial, age) => {
+const getAge =(birthday)=> {
+    //出生时间 毫秒
+    const birthDayTime = new Date(birthday).getTime();
+    //当前时间 毫秒
+    const nowTime = new Date().getTime();
+    //一年毫秒数(365 * 86400000 = 31536000000)
+    return Math.ceil((nowTime-birthDayTime)/31536000000);
+}
+
+const formatConversion = (name, serial) => {
     const utc_days = Math.floor(serial - 25569);
     const utc_value = utc_days * 86400;
     const date_info = new Date(utc_value * 1000);
@@ -68,7 +77,7 @@ const formatConversion = (name, serial, age) => {
 
     const zoneNum = getRandomInt(zones.length)
     const zone = zones[zoneNum]
-    const fans2 = zones[fan2]
+    const fans2 = mayor[zoneNum]
 
     const fans3 = news[getRandomInt(news.length)]
     const fans4 = song[getRandomInt(song.length)]
@@ -76,6 +85,9 @@ const formatConversion = (name, serial, age) => {
     const fans1 = school
     const job = jobs[getRandomInt(jobs.length)]
     const youtube = yt[getRandomInt(yt.length)]
+
+    const age = getAge(date)
+
     return {
         name,
         date,
@@ -95,10 +107,8 @@ const formatConversion = (name, serial, age) => {
 
 const onExport = () => {
 
-    let age = 25
     for (let i = 0; i < fileName.length; i++) {
-        fileName[i] = formatConversion(fileName[i].name, fileName[i].date, age)
-        age++
+        fileName[i] = formatConversion(fileName[i].name, fileName[i].date)
     }
 
     const workbook = XLSX.utils.book_new();
