@@ -51,6 +51,8 @@ $('#excel-file').change((e) => {
     }
 });
 
+const getRandomInt = (max) => Math.floor(Math.random() * max);
+
 const formatConversion = (name, serial, age) => {
     const utc_days = Math.floor(serial - 25569);
     const utc_value = utc_days * 86400;
@@ -63,6 +65,9 @@ const formatConversion = (name, serial, age) => {
     let account = name.replace(/\s*/g, "").toLowerCase()
     account = account + nameYear
     const date = `${date_info.getFullYear()}-${date_info.getMonth()}-${date_info.getDate()}`
+
+    const fans3 = news[getRandomInt(news.length)]
+    const fans4 = song[getRandomInt(song.length)]
 
     console.log(name, password)
 
