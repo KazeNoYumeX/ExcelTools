@@ -86,7 +86,7 @@ const formatConversion = (name, serial) => {
     const job = jobs[getRandomInt(jobs.length)]
     const youtube = yt[getRandomInt(yt.length)]
 
-    const age = getAge(date)
+    const age = getAge(date) -1
 
     return {
         name,
