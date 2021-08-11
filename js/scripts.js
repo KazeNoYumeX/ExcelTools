@@ -66,19 +66,30 @@ const formatConversion = (name, serial, age) => {
     account = account + nameYear
     const date = `${date_info.getFullYear()}-${date_info.getMonth()}-${date_info.getDate()}`
 
+    const zoneNum = getRandomInt(zones.length)
+    const zone = zones[zoneNum]
+    const fans2 = zones[fan2]
+
     const fans3 = news[getRandomInt(news.length)]
     const fans4 = song[getRandomInt(song.length)]
-
-    console.log(name, password)
-
+    const school = schools[getRandomInt(schools.length)]
+    const fans1 = school
+    const job = jobs[getRandomInt(jobs.length)]
+    const youtube = yt[getRandomInt(yt.length)]
     return {
         name,
         date,
         age,
         account,
         password,
+        zone,
+        job,
+        school,
+        fans1,
+        fans2,
         fans3,
-        fans4
+        fans4,
+        youtube
     };
 }
 
