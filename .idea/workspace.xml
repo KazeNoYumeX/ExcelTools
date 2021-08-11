@@ -20,20 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c4aa221-e5e8-40a4-86e2-7baa138af36a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ExcelTools.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/img/bg-masthead.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/filepond.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/filepond.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +65,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1628648145186</updated>
-      <workItem from="1628648146476" duration="4535000" />
+      <workItem from="1628648146476" duration="5044000" />
     </task>
     <servers />
   </component>

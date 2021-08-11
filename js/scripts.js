@@ -16,11 +16,10 @@ let fileName = ''
 $('#excel-file').change((e) => {
     const files = e.target.files;
     const extension = files[0].name.split('.').pop()
-    let excelData
 
     if (extensionList.indexOf(extension) !== -1) {
-        let fileReader = new FileReader();
-        fileReader.onload = (ev)=> {
+        const fileReader = new FileReader();
+        fileReader.onload =  (ev)=> {
             try {
                 const data = ev.target.result
                 // 以二進位制流方式讀取得到整份excel表格物件
@@ -29,21 +28,23 @@ $('#excel-file').change((e) => {
                 })
                 // 儲存獲取到的資料
                 let excelData = [];
+
+                // 表格的表格範圍，可用於判斷表頭是否數量是否正確
+                let fromTo = '';
+                // 遍歷每張表讀取
+                for (var sheet in workbook.Sheets) {
+                    if (workbook.Sheets.hasOwnProperty(sheet)) {
+                        fromTo = workbook.Sheets[sheet]['!ref'];
+                        console.log(fromTo);
+                        excelData = excelData.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                        //  break; // 如果只取第一張表，就取消註釋這行
+                    }
+                }
+                fileName = excelData
             } catch (e) {
                 console.log('檔案型別不正確');
                 return;
             }
-            // 表格的表格範圍，可用於判斷表頭是否數量是否正確
-            let fromTo = '';
-            // 遍歷每張表讀取
-            for (let sheet in workbook.Sheets) {
-                if (workbook.Sheets.hasOwnProperty(sheet)) {
-                    fromTo = workbook.Sheets[sheet]['!ref'];
-                    excelData = excelData.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
-                    //  break; // 如果只取第一張表，就取消註釋這行
-                }
-            }
-            fileName = excelData
         };
         // 以二進位制方式開啟檔案
         fileReader.readAsBinaryString(files[0]);
